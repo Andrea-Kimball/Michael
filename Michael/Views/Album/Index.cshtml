@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Michael.Data.Album>
+@{
+    ViewBag.Title = "AlbumIndex";
+}
+    
+<h2>Albums</h2>
+
+<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+
+@*@if(ViewBag.Model.Length == 0)
+{
+    <p> No Albums yet!</p>
+}*@
+<p>
+    @Html.ActionLink("Add an Album", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>Era</th>
+        <th>Title</th>
+        <th>Description</th>
+
+    </tr>
+    @foreach(var album in Model)
+    {
+<tr>
+    <td>@album.Category.Name</td>
+    <td>@album.Title</td>
+    <td>@album.Description</td>
+    <td>
+        @Html.ActionLink("Add a Song", "Song", new { id = album.AlbumId })
+        @Html.ActionLink("Modify", "Edit", new { id = album.AlbumId })
+        @Html.ActionLink("Details", "Details", new { id = album.AlbumId })
+        @Html.ActionLink("Delete", "Delete", new { id = album.AlbumId })
+    </td>
+</tr>
+    }
+    </table>
+
+
+
+
+
+    @*<table class="table">
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+
+                <th></th>
+            </tr>
+            @foreach (var item in Model)
+            {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>*@
+
+  
+

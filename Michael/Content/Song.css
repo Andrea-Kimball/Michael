@@ -1,0 +1,10 @@
+﻿body {
+    background-image: url('../Assets/MJgif.gif');
+    background-size: contain ;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-attachment: fixed;
+    font-size: 3rem;
+    font-weight: 600;    
+    background-color:lightslategrey;
+}

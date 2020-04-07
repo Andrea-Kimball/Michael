@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Michael.Data.Song>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<link href="~/Content/Song.css" rel="stylesheet" type="text/css" />
+
+<h2>Full Discography</h2>
+
+<p>
+    @Html.ActionLink("Add a song", "Create")
+</p>
+
+<table class="table">
+    <tr>
+        <th>Album</th>
+        <th>Title</th>
+        
+
+    </tr>
+    @foreach (var song in Model)
+    {
+        <tr>
+            <td>@song.Albums.Title</td>
+            <td>@song.Title</td>
+            
+            <td>
+                @Html.ActionLink("Add a Song", "Song", new { id = song.SongId })
+                @Html.ActionLink("Modify", "Edit", new { id = song.SongId })
+                @Html.ActionLink("Details", "Details", new { id = song.SongId })
+                @Html.ActionLink("Delete", "Delete", new { id = song.SongId })
+            </td>
+        </tr>
+    }
+</table>
