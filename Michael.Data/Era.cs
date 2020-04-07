@@ -14,7 +14,7 @@ namespace Michael.Data
     {
         [Key]
         public int EraId { get;set; }
-        public string Name{ get; set; }
+        public string EraName{ get; set; }
 
         [Required]
         public virtual ICollection<Album> Albums { get; set; } = new List<Album>();

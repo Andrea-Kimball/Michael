@@ -28,7 +28,7 @@ namespace Michael.Services
             Era entity = new Era
             {
                 EraId = model.EraId,
-                Name = model.Name,
+                EraName = model.EraName,
                 Albums = model.Albums
 
 
@@ -50,7 +50,7 @@ namespace Michael.Services
             var EraList = entityList.Select(Era => new EraListItem
             {
                 EraId = Era.EraId,
-                Name = Era.Name,
+                EraName = Era.EraName,
 
             }).ToList();
             //return changed list
@@ -69,7 +69,7 @@ namespace Michael.Services
             var model = new EraDetail
             {
                 EraId = entity.EraId,
-                Name = entity.Name,
+                EraName = entity.EraName,
                 Albums = entity.Albums
             };
             return model;

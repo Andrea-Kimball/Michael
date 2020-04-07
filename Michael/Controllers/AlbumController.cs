@@ -43,7 +43,7 @@ namespace Michael.Controllers
                 Album newAlbum = new Album
                 {
                     Title = album.Title,
-                    Description = album.Description,
+                    AlbumDescription = album.AlbumDescription,
                     Category = newEra
                 };
                 _db.Albums.Add(newAlbum);
@@ -132,7 +132,7 @@ namespace Michael.Controllers
             Era theEra = _db.Eras
                 .Include(e => e.Albums)
                 .Single(e => e.EraId == eraid);
-            ViewBag.title = "Albums in Era: " + theEra.Name;
+            ViewBag.title = "Albums in Era: " + theEra.EraName;
             return View("Index", theEra.Albums);
         }
 

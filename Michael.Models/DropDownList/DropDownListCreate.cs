@@ -4,14 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Michael.Models.Albums
+namespace Michael.Models.DropDownList
 {
-    public class AlbumListItem
+    public class DropDownListCreate
     {
+        public int EraId { get; set; }
         public int AlbumId { get; set; }
-       
-        public string Title { get; set; }
-        
-        public string AlbumDescription { get; set; }
+        public int SongId { get; set; }
     }
 }

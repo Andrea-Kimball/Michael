@@ -31,7 +31,7 @@ namespace Michael.Services
             var entity = new Album()
             {
                 Title = model.Title,
-                Description = model.Description,
+                AlbumDescription = model.AlbumDescription,
                 
             };
             using (var _ctx = new ApplicationDbContext())
@@ -74,7 +74,7 @@ namespace Michael.Services
             {
                 AlbumId = Album.AlbumId,
                 Title = Album.Title,
-                Description= Album.Description
+                AlbumDescription= Album.AlbumDescription
             }).ToList();
 
             //return changed list
@@ -94,7 +94,7 @@ namespace Michael.Services
             {
                 AlbumId = entity.AlbumId,
                 Title = entity.Title,
-                Description = entity.Description,
+                AlbumDescription = entity.AlbumDescription,
                // Song = entity.Song,
                 Song = entity.Songs.Select(song => new SongListItem
                 {

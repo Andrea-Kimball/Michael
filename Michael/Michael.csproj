@@ -169,6 +169,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AlbumController.cs" />
+    <Compile Include="Controllers\DropDownListController.cs" />
     <Compile Include="Controllers\EraController.cs" />
     <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -280,6 +281,7 @@
     <Content Include="Views\Song\Delete.cshtml" />
     <Content Include="Views\Song\Edit.cshtml" />
     <Content Include="Views\Era\Details.cshtml" />
+    <Content Include="Views\DropDownList\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -59,6 +59,7 @@
     <Compile Include="Albums\AlbumListItem.cs" />
     <Compile Include="Albums\AlbumEdit.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="DropDownList\DropDownListCreate.cs" />
     <Compile Include="Era\EraCreate.cs" />
     <Compile Include="Era\EraDetail.cs" />
     <Compile Include="Era\EraListItem.cs" />

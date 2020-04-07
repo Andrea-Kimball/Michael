@@ -3,7 +3,7 @@ namespace Michael.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class SecondMigration : DbMigration
+    public partial class migration : DbMigration
     {
         public override void Up()
         {
@@ -13,12 +13,11 @@ namespace Michael.Data.Migrations
                     {
                         AlbumId = c.Int(nullable: false, identity: true),
                         Title = c.String(nullable: false),
-                        Description = c.String(nullable: false),
-                        EraId = c.Int(),
-                        MJE = c.Int(nullable: false),
+                        AlbumDescription = c.String(nullable: false),
+                        EraId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.AlbumId)
-                .ForeignKey("dbo.Eras", t => t.EraId)
+                .ForeignKey("dbo.Eras", t => t.EraId, cascadeDelete: true)
                 .Index(t => t.EraId);
             
             CreateTable(
@@ -26,7 +25,7 @@ namespace Michael.Data.Migrations
                 c => new
                     {
                         EraId = c.Int(nullable: false, identity: true),
-                        MJE = c.Int(nullable: false),
+                        EraName = c.String(),
                     })
                 .PrimaryKey(t => t.EraId);
             

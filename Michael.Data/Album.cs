@@ -17,7 +17,7 @@ namespace Michael.Data
         [Required]
         public string Title { get; set; }
         [Required]
-        public string Description { get; set; }
+        public string AlbumDescription { get; set; }
 
         [ForeignKey("Category")]        
         public int EraId { get; set; }

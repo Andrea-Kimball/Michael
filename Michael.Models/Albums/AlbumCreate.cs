@@ -12,12 +12,12 @@ namespace Michael.Models.Albums
 {
     public class AlbumCreate
     {
-        [ForeignKey("MJE")]
+        [ForeignKey("Era")]
         public int EraId { get; set; }
         public string Title { get; set; }
 
         [Required]
-        public string Description { get; set; }
+        public string AlbumDescription { get; set; }
 
         
         

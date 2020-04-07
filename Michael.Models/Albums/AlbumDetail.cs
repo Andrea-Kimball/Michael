@@ -12,7 +12,7 @@ namespace Michael.Models.Albums
     {
         public int AlbumId { get; set; }
         public string Title { get; set; }
-        public string Description { get; set; }        
+        public string AlbumDescription { get; set; }        
         public List<SongListItem> Song { get; set; } = new List<SongListItem>();
     }
 }
