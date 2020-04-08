@@ -14,13 +14,12 @@ namespace Michael.Services
     {
         private readonly ApplicationDbContext _context;
         private readonly Guid _userId;
-        public EraService(Guid userId)
+        public EraService()
         {
             _context = new ApplicationDbContext();
-            _userId = userId;
+            //_userId = userId;
 
         }
-
 
         //CREATE
         public bool CreateEra(EraCreate model)
@@ -34,11 +33,38 @@ namespace Michael.Services
 
             };
             _context.Eras.Add(entity);
-            return _context.SaveChanges() ==1;
-             
-
+            return _context.SaveChanges() == 1;
         }
 
+        //EDIT
+        public bool UpdateEra(EraEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx
+                        .Eras
+                        .Single(e => e.EraId == model.EraId);
+
+                entity.EraName = model.EraName;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
+        //DELETE
+        public bool DeleteEra(int eraId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx
+                        .Eras
+                        .Single(e => e.EraId == eraId);
+
+                ctx.Eras.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
 
         //GET ALL
         public async Task<List<EraListItem>> GetAllErasAsync()
@@ -58,21 +84,26 @@ namespace Michael.Services
         }
 
         //GET BY ID
-        public async Task<EraDetail> GetEraByIdAsync(int EraId)
+        public EraDetail GetEraById(int? eraId)
         {
-            //Search Database by Id for Era
-            var entity = await _context.Eras.FindAsync(EraId);
-            if (entity == null)
-                throw new Exception("No Era found.");
-            //Turn the entity into the Detail
-
-            var model = new EraDetail
+            using (var ctx = new ApplicationDbContext())
             {
-                EraId = entity.EraId,
-                EraName = entity.EraName,
-                Albums = entity.Albums
-            };
-            return model;
+                var entity =
+                    ctx
+                        .Eras
+                        .Single(e => e.EraId == eraId);
+                return
+                    new EraDetail
+                    {
+                        EraId = entity.EraId,
+                        EraName = entity.EraName,
+                        Albums = entity.Albums,
+                        
+                    };
+            }
+           
         }
+
+
     }
 }

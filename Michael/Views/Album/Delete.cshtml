@@ -1,4 +1,4 @@
-﻿@model Michael.Models.Albums.AlbumCreate
+﻿@model Michael.Models.Albums.AlbumDetail
 @{
     ViewBag.Title = "Delete";
 }
@@ -17,10 +17,10 @@
             @Html.DisplayFor(model => model.Title)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayNameFor(model => model.AlbumDescription)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Description)
+            @Html.DisplayFor(model => model.AlbumDescription)
         </dd>
     </dl>
     @using (Html.BeginForm())

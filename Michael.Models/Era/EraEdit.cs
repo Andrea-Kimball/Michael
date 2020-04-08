@@ -1,5 +1,4 @@
-﻿using Michael.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Michael.Models.Era
 {
-    public class EraDetail
+    public class EraEdit
     {
         public int EraId { get; set; }
-        [Display(Name ="Era Name")]
+
+        [Display(Name = "Era Name")]
         public string EraName { get; set; }
-        public virtual ICollection<Album> Albums { get; set; } = new List<Album>();
     }
 }

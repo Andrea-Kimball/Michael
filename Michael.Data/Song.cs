@@ -15,10 +15,10 @@ namespace Michael.Data
         [Required]
         public string Title { get; set; }
 
-        [ForeignKey("Albums")]
-        public int? AlbumId { get; set; }
-        //navigation property
-        public virtual Album Albums { get; set; }
+        [ForeignKey("Category")]
+        [Display(Name = "Album")]
+        public int AlbumId { get; set; }
+        public virtual Album Category { get; set; }
 
         public int ReleaseYear { get; set; }
 

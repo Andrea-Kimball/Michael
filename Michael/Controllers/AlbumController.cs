@@ -1,5 +1,6 @@
 ﻿using Michael.Data;
 using Michael.Models;
+using Michael.Models.Albums;
 using Michael.Services;
 using Microsoft.AspNet.Identity;
 using System;
@@ -32,9 +33,7 @@ namespace Michael.Controllers
 
         //POST: Album/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-
-        
+        [ValidateAntiForgeryToken]        
         public ActionResult Create(Album album)
         {
            if (ModelState.IsValid)
@@ -57,25 +56,21 @@ namespace Michael.Controllers
         //GET: Album/Delete/{id}
         public ActionResult Delete(int? id)
         {
-            if(id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Album album = _db.Albums.Find(id);
-            if(album == null)
-            {
-                return HttpNotFound();
-            }
-            return View(album);
+            var svc = CreateAlbumService();
+            var model = svc.GetAlbumById(id);
+
+            return View(model);
         }
+        
         //POST: Album/Delete/{id}
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(int id)
         {
-            Album album = _db.Albums.Find(id);
-            _db.Albums.Remove(album);
-            _db.SaveChanges();
+            var service = CreateAlbumService();
+
+            service.DeleteAlbum(id);
+
             return RedirectToAction("Index");
 
         }
@@ -83,17 +78,19 @@ namespace Michael.Controllers
         //GET: Album/Edit/{id}
         public ActionResult Edit(int? id)
         {
-            if(id== null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Album album = _db.Albums.Find(id);
-            if (album == null)
-            {
-                return HttpNotFound();
-            }
-            return View(album);
+            var service = CreateAlbumService();
+            var detail = service.GetAlbumById(id);
+            var model =
+                new AlbumEdit
+                {
+                    AlbumId = detail.AlbumId,
+                    Title = detail.Title,
+                    AlbumDescription= detail.AlbumDescription
+
+                };
+            return View(model);
         }
+       
         //POST: Album/Edit/{id}
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -107,19 +104,13 @@ namespace Michael.Controllers
             }
             return View(album);
         }
+        
         //GET Album/Details/{id}
         public ActionResult Details(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Album album = _db.Albums.Find(id);
-            if(album == null)
-            {
-                return HttpNotFound();
-            }
-            return View(album);
+            var svc = CreateAlbumService();
+            var model = svc.GetAlbumById(id);
+            return View(model);
         }
 
         //View Albums by Era 
@@ -136,10 +127,10 @@ namespace Michael.Controllers
             return View("Index", theEra.Albums);
         }
 
-        private AlbumService GetAlbumService()
+        private AlbumService CreateAlbumService()
         {
-            var userId = User.Identity.GetUserId();
-            var service = new AlbumService(userId);
+            //var userId = User.Identity.GetUserId();
+            var service = new AlbumService();
             return service;
         }
         

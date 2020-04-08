@@ -59,9 +59,13 @@
     <Compile Include="Era.cs" />
     <Compile Include="Group.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202004070420351_migration.cs" />
-    <Compile Include="Migrations\202004070420351_migration.Designer.cs">
-      <DependentUpon>202004070420351_migration.cs</DependentUpon>
+    <Compile Include="Migrations\202004071643544_migration.cs" />
+    <Compile Include="Migrations\202004071643544_migration.Designer.cs">
+      <DependentUpon>202004071643544_migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004081834310_fifthmigration.cs" />
+    <Compile Include="Migrations\202004081834310_fifthmigration.Designer.cs">
+      <DependentUpon>202004081834310_fifthmigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,8 +76,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202004070420351_migration.resx">
-      <DependentUpon>202004070420351_migration.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202004071643544_migration.resx">
+      <DependentUpon>202004071643544_migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004081834310_fifthmigration.resx">
+      <DependentUpon>202004081834310_fifthmigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -22,5 +22,12 @@ namespace Michael.Controllers
             List<Era> eras = ctx.Eras.ToList();
             return eras;
         }
+        public ActionResult GetAlbumList(int EraId)
+        {
+            ApplicationDbContext ctx = new ApplicationDbContext();
+            List<Album> selectList = ctx.Albums.Where(x => x.EraId == EraId).ToList();
+            ViewBag.AlbumList = new SelectList(selectList, "AlbumId", "Title");
+            return View();
+        }
     }
 }

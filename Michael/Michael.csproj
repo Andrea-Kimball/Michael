@@ -179,7 +179,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\AddAlbumViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -275,13 +274,16 @@
     <Content Include="Views\Album\Edit.cshtml" />
     <Content Include="Views\Album\Details.cshtml" />
     <Content Include="Views\Song\Index.cshtml" />
-    <Content Include="Views\Era\Index.cshtml" />
     <Content Include="Views\Song\Create.cshtml" />
     <Content Include="Views\Song\Details.cshtml" />
     <Content Include="Views\Song\Delete.cshtml" />
     <Content Include="Views\Song\Edit.cshtml" />
     <Content Include="Views\Era\Details.cshtml" />
     <Content Include="Views\DropDownList\Index.cshtml" />
+    <Content Include="Views\Era\Create.cshtml" />
+    <Content Include="Views\Era\Edit.cshtml" />
+    <Content Include="Views\Era\Delete.cshtml" />
+    <Content Include="Views\Era\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

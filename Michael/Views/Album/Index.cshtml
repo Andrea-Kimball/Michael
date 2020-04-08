@@ -6,14 +6,14 @@
 <h2>All Albums</h2>
 
 <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-
-@*@if(ViewBag.Model.Length == 0)
+@*@if(ViewBag.Model.Count ==0)
 {
     <p> No Albums yet!</p>
 }*@
 <p>
     @Html.ActionLink("Add an Album", "Create")
 </p>
+
 <table class="table">
     <tr>
         <th>Era</th>
@@ -24,11 +24,11 @@
     @foreach(var album in Model)
     {
 <tr>
-    <td>@album.Category.Name</td>
+    <td>@album.Category.EraName</td>
     <td>@album.Title</td>
-    <td>@album.Description</td>
+    <td>@album.AlbumDescription</td>
     <td>
-        @Html.ActionLink("Add a Song", "Song", new { id = album.AlbumId })
+        @Html.ActionLink("Add a Song","Create", "Song")
         @Html.ActionLink("Modify", "Edit", new { id = album.AlbumId })
         @Html.ActionLink("Details", "Details", new { id = album.AlbumId })
         @Html.ActionLink("Delete", "Delete", new { id = album.AlbumId })

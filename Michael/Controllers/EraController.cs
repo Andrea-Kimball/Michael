@@ -28,90 +28,105 @@ namespace Michael.Controllers
         //POST: Era/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(EraCreate era)
-        {
-            if (ModelState.IsValid) return View(era);
-            var service = CreateEraService();
-            if(service.CreateEra(era))
-            {
-                TempData["SaveResult"] = "New Era created.";
-                return RedirectToAction("Index");
-            }
-            ModelState.AddModelError("", "Unable to create new Era.");
-            return View(era);
-        }
-        //GET: Era/Delete/{id}
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Era era= _db.Eras.Find(id);
-            if (era == null)
-            {
-                return HttpNotFound();
-            }
-            return View(era);
-        }
-        //POST: Album/Delete/{id}
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id)
-        {
-            Era era = _db.Eras.Find(id);
-            _db.Eras.Remove(era);
-            _db.SaveChanges();
-            return RedirectToAction("Index");
-
-        }
-
-        //GET: EraEdit/{id}
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Era era = _db.Eras.Find(id);
-            if (era == null)
-            {
-                return HttpNotFound();
-            }
-            return View(era);
-        }
-        //POST: Era/Edit/{id}
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(Era era)
+        public ActionResult Create(Era era)
         {
             if (ModelState.IsValid)
             {
-                _db.Entry(era).State = EntityState.Modified;
+                Era newEra = new Era
+                {
+                    EraName = era.EraName
+                };
+                _db.Eras.Add(newEra);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(era);
         }
-        //GET Era/Details/{id}
-        public ActionResult Details(int? id)
+       
+        
+        //GET: Era/Delete/{id}
+        public ActionResult Delete(int? id)
         {
-            if (id == null)
+            var svc = CreateEraService();
+            var model = svc.GetEraById(id);
+
+            return View(model);
+
+            
+        }
+        
+        //POST: Album/Delete/{id}
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult Delete(int id)
+        {
+
+            var service = CreateEraService();
+
+            service.DeleteEra(id);            
+
+            return RedirectToAction("Index");
+            
+
+        }
+
+        //GET: Era/EDIT
+        public ActionResult Edit(int id)
+        {
+            var service = CreateEraService();
+            var detail = service.GetEraById(id);
+            var model =
+                new EraEdit
+                {
+                    EraId = detail.EraId,
+                    EraName = detail.EraName,
+
+                };
+            return View(model);
+        }
+        
+        //POST: Era/EDIT
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, EraEdit model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            if (model.EraId != id)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                ModelState.AddModelError("", "Id Mismatch");
+                return View(model);
             }
-            Era era = _db.Eras.Find(id);
-            if (era == null)
+
+            var service = CreateEraService();
+
+            if (service.UpdateEra(model))
             {
-                return HttpNotFound();
+                TempData["SaveResult"] = "Your Era was updated.";
+                return RedirectToAction("Index");
             }
-            return View(era);
+
+            ModelState.AddModelError("", "Your Era could not be updated.");
+            return View(model);
+        }
+
+
+        //GET Era/Details/{id}
+        public ActionResult Details(int id)
+        {
+
+            var svc = CreateEraService();
+            var model = svc.GetEraById(id);
+            return View(model);
+
         }
         private EraService CreateEraService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var service = new EraService(userId);
+            //var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new EraService();
             return service;
         }
     }
+    
 }
+

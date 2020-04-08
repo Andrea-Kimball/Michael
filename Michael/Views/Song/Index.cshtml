@@ -8,9 +8,6 @@
 
 <h2>Full Discography</h2>
 <p> Jackson 5 to Invicible @Html.ActionLink("Contact us to recommend any changes", "Contact", "Home") </p>
-<p>
-    @Html.ActionLink("Add a song", "Create")
-</p>
 
 <table class="table">
     <tr>
@@ -22,11 +19,11 @@
     @foreach (var song in Model)
     {
         <tr>
-            <td>@song.Albums.Title</td>
+            <td>@song.Category.Title</td>
             <td>@song.Title</td>
             
             <td>
-                @Html.ActionLink("Add a Song", "Song", new { id = song.SongId })
+                
                 @Html.ActionLink("Modify", "Edit", new { id = song.SongId })
                 @Html.ActionLink("Details", "Details", new { id = song.SongId })
                 @Html.ActionLink("Delete", "Delete", new { id = song.SongId })

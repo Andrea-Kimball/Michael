@@ -62,6 +62,7 @@
     <Compile Include="DropDownList\DropDownListCreate.cs" />
     <Compile Include="Era\EraCreate.cs" />
     <Compile Include="Era\EraDetail.cs" />
+    <Compile Include="Era\EraEdit.cs" />
     <Compile Include="Era\EraListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Songs\SongCreate.cs" />

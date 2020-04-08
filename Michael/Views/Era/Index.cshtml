@@ -1,7 +1,39 @@
-﻿
+﻿@model IEnumerable<Michael.Data.Era>
+
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
 
+<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+@*@if(ViewBag.Model.Count ==0)
+    {
+        <p> No Albums yet!</p>
+    }*@
+<p>
+    @Html.ActionLink("Add an Era", "Create")
+</p>
+
+<table class="table">
+    <tr>
+        <th>Era</th>
+        <th>Name</th>
+        
+
+    </tr>
+    @foreach (var era in Model)
+    {
+        <tr>
+            <td>@era.EraId</td>
+            <td>@era.EraName</td>
+            
+            <td>
+                @Html.ActionLink("Add an Album", "Create", "Album")
+                @Html.ActionLink("Modify", "Edit", new { id = era.EraId })
+                @Html.ActionLink("Details", "Details", new { id = era.EraId })
+                @Html.ActionLink("Delete", "Delete", new { id = era.EraId })
+            </td>
+        </tr>
+    }
+</table>

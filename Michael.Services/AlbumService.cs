@@ -17,10 +17,10 @@ namespace Michael.Services
 
         private readonly ApplicationDbContext _ctx;
         private readonly string _userId;
-        public AlbumService(string userId)
+        public AlbumService()
         {
             _ctx = new ApplicationDbContext();
-            _userId = userId;
+           // _userId = userId;
 
         }
 
@@ -47,7 +47,10 @@ namespace Michael.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Albums;
+                var entity = ctx
+                    .Albums
+                    .Single(a=>a.AlbumId==model.AlbumId);
+                entity.Title = model.Title;
                 return ctx.SaveChanges() == 1;
             }
         }
@@ -70,7 +73,7 @@ namespace Michael.Services
             var entityList =  _ctx.Albums.ToList();
 
             //turn Albums into AlbumlistItems
-            var AlbumList = entityList.Select(Album => new AlbumListItem
+            var albumList = entityList.Select(Album => new AlbumListItem
             {
                 AlbumId = Album.AlbumId,
                 Title = Album.Title,
@@ -78,42 +81,32 @@ namespace Michael.Services
             }).ToList();
 
             //return changed list
-            return AlbumList;
+            return albumList;
 
-            //GET BY ID
+            
         }
-        public async Task<AlbumDetail> GetAlbumByIdAsync(int AlbumId)
+
+        //GET ALBUMS BY ID
+        public AlbumDetail GetAlbumById(int? albumId)
         {
-            //Search Database by Id for Album
-            var entity = await _ctx.Albums.FindAsync(AlbumId);
-            if (entity == null)
-                throw new Exception("No Album found.");
-            //Turn the entity into the Detail
-
-            var model = new AlbumDetail
+            using (var ctx = new ApplicationDbContext())
             {
-                AlbumId = entity.AlbumId,
-                Title = entity.Title,
-                AlbumDescription = entity.AlbumDescription,
-               // Song = entity.Song,
-                Song = entity.Songs.Select(song => new SongListItem
-                {
-                    SongId = song.SongId,
-                    Title = song.Title,
-                }).ToList(),
+                var entity =
+                    ctx
+                        .Albums
+                        .Single(e => e.AlbumId == albumId);
+                return
+                    new AlbumDetail
+                    {
+                        AlbumId = entity.AlbumId,
+                        Title = entity.Title,
+                        AlbumDescription = entity.AlbumDescription,
+                        Songs = entity.Songs,
 
-            };
-//            foreach (var album in entity.Album)
-//            {
-//                model.Albums.Add(new EraListItem{
-
-
-//                    AlbumId = album.AlbumId, 
-//                EraId = album.EraId,
-//});
-
-                //return the detail model
-                return model;
+                    };
             }
+
+        }
+
     }
 }
