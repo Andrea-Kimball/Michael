@@ -16,15 +16,14 @@ namespace Michael.Models.Albums
         public int AlbumId { get; set; }
         public string Title { get; set; }
 
-        [Display(Name ="Album Description")]
+        [Display(Name = "Album Description")]
         public string AlbumDescription { get; set; }
 
         [ForeignKey("Category")]
         public int EraId { get; set; }
-        
+
 
         
-        public virtual IEnumerable<Song> Songs { get; set; } 
-       // public virtual ICollection<Song> Songs { get; set; }
+        public virtual ICollection<Song> Songs { get; set; }
     }
 }

@@ -16,6 +16,6 @@ namespace Michael.Models.Era
         [Display(Name ="Era Name")]
         public string EraName { get; set; }
         
-        public virtual IEnumerable<Album> Albums { get; set; }
+        public virtual ICollection<Album> Albums { get; set; }
     }
 }

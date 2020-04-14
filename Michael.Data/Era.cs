@@ -8,10 +8,13 @@ namespace Michael.Data
     public class Era
     {
         [Key]
+        [Display(Name = "Era Id")]
         public int EraId { get; set; }
-        public string EraName { get; set; }       
 
-        public virtual IEnumerable<Album> Albums { get; set; } //= new List<Album>();
+        [Display(Name = "Era Name")]
+        public string EraName { get; set; }
+
+        public virtual ICollection<Album> Albums { get; set; } //= new List<Album>();
 
     }
 }

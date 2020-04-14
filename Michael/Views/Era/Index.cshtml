@@ -6,55 +6,56 @@
 <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
 
 
-    
+<div class=" col-md-6">
+    <hr />
+    <hr />
 
-                <h3>Era Index</h3>
-
-            
-                <p>
+    <h3>Era Index</h3>
 
 
-                <p>
-                    @Html.ActionLink("Add an Era", "Create")
-                </p>
-                <div class=" col-md-6">
-                    <table class="table">
-                        <tr>
-                            <th>
-                                @Html.DisplayNameFor(model => model.EraId)
-                            </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.EraName)
-                            </th>
-                            <th></th>
-                        </tr>
+    <p>
 
-                        @foreach (var era in Model)
-                        {
-                            <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => era.EraId)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => era.EraName)
-                                </td>
 
-                                <td>
-                                    @Html.ActionLink("Add an Album", "Create", "Album")
-                                    @Html.ActionLink("Modify", "Edit", new { id = era.EraId })
-                                    @Html.ActionLink("Details", "Details", new { id = era.EraId })
-                                    @Html.ActionLink("Delete", "Delete", new { id = era.EraId })
+    <p>
+        @Html.ActionLink("Add an Era", "Create")
+    </p>
 
-                                </td>
-                            </tr>
-                        }
-                    </table>
-                </div>
 
-       
-    <div class="col-md-6">
-        <img src="~/Assets/community_image_1425065305.gif" style="width:600px; height:500px;" alt="" class="container_img" />
+    <div class=" table-bordered">
+        <table class="table">
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.EraName)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var era in Model)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => era.EraName)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Add an Album", "Create", "Album")
+                        @Html.ActionLink("Modify", "Edit", new { id = era.EraId })
+                        @Html.ActionLink("Details", "Details", new { id = era.EraId })
+                        @Html.ActionLink("Delete", "Delete", new { id = era.EraId })
+
+                    </td>
+                </tr>
+            }
+        </table>
     </div>
+</div>
+
+
+<div class="col-md-6">
+    <img src="~/Assets/community_image_1425065305.gif" style="width:600px; height:500px;" alt="" class="container_img" />
+</div>
 
 
 

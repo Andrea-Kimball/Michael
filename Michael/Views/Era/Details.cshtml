@@ -5,46 +5,36 @@
 }
 
 <!DOCTYPE html>
+<div class=" col-md-12">
+    <hr />
+    <hr />
 
-<html>
-<head>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Details</title>
-</head>
-<body>
-    <div>
-        <h4>EraDetail</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.EraId)
-            </dt>
+    <h4>Era Detail</h4>
+    <hr />
+    <div class=" col-md-6">
+        <table class="table">
+            
 
-            <dd>
-                @Html.DisplayFor(model => model.EraId)
-            </dd>
+                <tr><b>Title</b></tr>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.EraName)
-            </dt>
+            
 
-            <dd>
-                @Html.DisplayFor(model => model.EraName)
-            </dd>
-            <dt>
-                @Html.DisplayNameFor(model => model.Albums)
-            </dt>
+            @foreach (var era in Model.Albums)
+            {
+                <tr>
+                    <td>@era.Title</td>
 
-            <dd>
-                @Html.DisplayFor(model => model.Albums)
-            </dd>
 
-        </dl>
+                </tr>
+            }
+        </table>
     </div>
-    <p>
-        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-</body>
-</html>
+    
+</div>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+    
+        
+    
+

@@ -1,12 +1,11 @@
 ﻿body {
-    background-color: #534AFF;
+    background-color: #3AB7E8;
     padding-top: 0px;
     padding-bottom: 0px;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -28,37 +27,34 @@ h1 {
     letter-spacing: 4px;
 }
 
-h2{
-
+h2 {
 }
 
-h3{
-
+h3 {
 }
 
-h4{
-
+h4 {
 }
 
-p{
-
+p {
 }
+
 a {
     color: darkred;
 }
-    a-hover {
-        color: black;
-    }
-    
-               
-           
 
-.img{
-max-height: 100%;
-
+a-hover {
+    color: black;
 }
-.ftr{
 
+
+
+
+.img {
+    max-height: 100%;
+}
+
+.ftr {
 }
 
 
@@ -67,7 +63,7 @@ max-height: 100%;
 
 /*Home-Index*/
 .home {
-    width: 1170px;    
+    width: 1170px;
     background-size: 100%;
     background-position: center;
     background-attachment: fixed;
@@ -76,13 +72,14 @@ max-height: 100%;
     background-attachment: fixed;
     padding-right: 15px;
     padding-left: 15px;
-    margin-top:75px;
+    margin-top: 75px;
     margin-right: auto;
     margin-left: auto;
     color: white;
 }
-#home{
-    margin-top:75px;
+
+#home {
+    margin-top: 75px;
 }
 /*Era-Index*/
 
@@ -95,28 +92,33 @@ max-height: 100%;
     0% {
         left: 0px;
     }
-    25%{
-       left: 100px;
+
+    25% {
+        left: 100px;
     }
-    50%{
+
+    50% {
         left: 200px;
     }
-    75%{
-        left:300px;
+
+    75% {
+        left: 300px;
     }
-    100%{
+
+    100% {
         left: 400px;
     }
 }
-#album {    
+
+#album {
     animation-name: album;
     animation-duration: 5s;
 }
 
 /*Song-Index*/
-.song{
-   
+.song {
 }
+
 #playlist {
     list-style: none;
 }
@@ -125,12 +127,12 @@ max-height: 100%;
         color: black;
     }
 
-#rotate {
-    position:absolute;    
-    animation-name:rotate;
-    animation-duration: 4s;
 
-}  
+#rotate {
+    position: absolute;
+    animation-name: rotate;
+    animation-duration: 4s;
+}
 
 @keyframes rotate {
     0% {
@@ -156,7 +158,6 @@ max-height: 100%;
     70% {
         transform: rotate(0deg);
         left: 700px;
-        
     }
 
     100% {

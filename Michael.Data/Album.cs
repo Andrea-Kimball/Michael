@@ -21,11 +21,11 @@ namespace Michael.Data
 
         [ForeignKey("Category")]        
         public int EraId { get; set; }
-        public virtual Era Category { get; set; }
-       
+        public virtual Era Category { get; set; }    
 
-        public virtual IEnumerable<Song> Songs { get; set; }
+        public virtual ICollection<Song> Songs { get; set; }
+        
 
-      
+
     }
 }

@@ -127,9 +127,7 @@ namespace Michael.Controllers
 
             var svc = CreateEraService();
             var model = svc.GetEraById(id);
-            //var albums = _db.Eras.???
-            var albums = _db.Albums.Select(e => e.EraId == id);
-            return View(model);       
+                  return View(model);       
 
         }
 

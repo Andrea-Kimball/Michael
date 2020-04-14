@@ -1,66 +1,33 @@
 ﻿@model Michael.Models.Albums.AlbumDetail
 
 
-
-<h4>Album Detail</h4>
-<hr />
-
-<dl class="dl-horizontal">
-
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.AlbumDescription)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.AlbumDescription)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Songs)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Songs)
-        </dd>
-
-    </dl>
-<p>
-    @Html.ActionLink("Edit", "Edit") |
-    @Html.ActionLink("Back to List", "Index") |
-    @Html.ActionLink("View Songs", "Index", "Song")
-</p>
+    <div class=" col-md-6">
+        <hr />
+        <hr />
+        <h4>Album Detail</h4>
+        <hr />
 
 
-@*<table class="table">
-        <tr>
 
-            <th>Title</th>
+        <table class="table">
+            
 
-
-        </tr>
-        @foreach (var album in Model)
-        {
-            <tr>
-                <td>@album.Title</td>
-
-                <td>
-                    @Html.ActionLink("Add a Song", "Create", "Song")
-                    @Html.ActionLink("Modify", "Edit", new { id = album.AlbumId })
-                    @Html.ActionLink("Details", "Details", new { id = album.AlbumId })
-                    @Html.ActionLink("Delete", "Delete", new { id = album.AlbumId })
-                </td>
-            </tr>
-        }
-    </table>*@
+                <tr><b>Title</b></tr>
 
 
+            
+            @foreach (var album in Model.Songs)
+            {
+                <tr>
+                    <td>@album.Title</td>
+
+
+                </tr>
+            }
+        </table>
+    </div>
+<div class=" col-md-6">
+
+</div>
 
 

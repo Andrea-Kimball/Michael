@@ -86,8 +86,8 @@ namespace Michael.Services
             
         }
 
-        //GET ALBUMS BY ID
-        public AlbumDetail GetAlbumById(int? albumId)
+        //VIEW SONGS BY ALBUM ID
+        public AlbumDetail GetByAlbumId(int albumId)
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -101,7 +101,7 @@ namespace Michael.Services
                         AlbumId = entity.AlbumId,
                         Title = entity.Title,
                         AlbumDescription = entity.AlbumDescription,
-                        Songs = entity.Songs,
+                        Songs = entity.Songs.ToList(),
 
                     };
             }
@@ -117,11 +117,11 @@ namespace Michael.Services
                 var entity =
                     ctx
                     .Albums
-                    .Where(e => e.EraId == id)
+                    .Where(e => e.AlbumId == id)
                     .Select(e =>
                        new AlbumDetail
                        {
-                           EraId = e.EraId,                           
+                           AlbumId = e.AlbumId,                           
                        }
                        );
                 return entity.ToArray();

@@ -45,7 +45,7 @@ namespace Michael.Controllers
                 {
                     Title = album.Title,
                     AlbumDescription = album.AlbumDescription,
-                    Category = newEra
+                    
                 };
                 _db.Albums.Add(newAlbum);
                 _db.SaveChanges();
@@ -57,10 +57,10 @@ namespace Michael.Controllers
 
         //GET: Album/Delete/{id}
         [Authorize(Roles = "Admin")]
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
             var svc = CreateAlbumService();
-            var model = svc.GetAlbumById(id);
+            var model = svc.GetByAlbumId(id);
 
             return View(model);
         }
@@ -68,7 +68,7 @@ namespace Michael.Controllers
         //POST: Album/Delete/{id}
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id)
+        public ActionResult DeleteAlbum(int id)
         {
             var service = CreateAlbumService();
 
@@ -80,10 +80,10 @@ namespace Michael.Controllers
 
         //GET: Album/Edit/{id}
         [Authorize(Roles = "Admin")]
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
             var service = CreateAlbumService();
-            var detail = service.GetAlbumById(id);
+            var detail = service.GetByAlbumId(id);
             var model =
                 new AlbumEdit
                 {
@@ -110,40 +110,15 @@ namespace Michael.Controllers
         }
 
         //GET Album/Details/{id}
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
-            //put this here for the details view. didnt work
-            //ICollection<Album> albums = _db.Albums.Include(c => c.Category).ToList();
+            
             var svc = CreateAlbumService();
-            var model = svc.GetAlbumById(id);
+            var model = svc.GetByAlbumId(id);
             return View(model);
         }
 
-        //View Albums by Era 
-        public ActionResult SearchByEra(int eraId)
-        {
-            //var svc = CreateAlbumService();
-            //var model = svc.GetAlbumByEra(eraId);
-            //return View(model);
-            if (eraId == 0)
-            {
-               return Redirect("/Era");
-            }
-            Era theEra = _db.Eras
-                 .Include(e => e.Albums)
-                 .Single(e => e.EraId == eraId);
-            ViewBag.title = "Albums in Era: " + theEra.EraName;
-            return View("Index", theEra.Albums);
-        }
-
-        //public ActionResult GetAlbumList(int? EraId)
-        //{
-        //    ApplicationDbContext ctx = new ApplicationDbContext();
-        //    List<Album> album = ctx.Albums.Where(x => x.EraId == EraId).ToList();
-        //    ViewData["MyData"] = album;
-        //    return View();
-        //}
-
+       
         private AlbumService CreateAlbumService()
         {
             //var userId = User.Identity.GetUserId();
