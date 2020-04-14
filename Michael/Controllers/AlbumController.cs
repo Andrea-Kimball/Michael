@@ -21,23 +21,25 @@ namespace Michael.Controllers
         // GET: Album
         public ActionResult Index()
         {
+            
             ICollection<Album> albums = _db.Albums.Include(c => c.Category).ToList();
-            return View(albums);
+            return View(_db.Albums.ToList());
         }
 
         //GET: Album/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
-        {                            
+        {
             return View();
         }
 
         //POST: Album/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]        
+        [ValidateAntiForgeryToken]
         public ActionResult Create(Album album)
         {
-           if (ModelState.IsValid)
-           {
+            if (ModelState.IsValid)
+            {
                 Era newEra = _db.Eras.Single(c => c.EraId == album.EraId);
                 Album newAlbum = new Album
                 {
@@ -50,10 +52,11 @@ namespace Michael.Controllers
                 return RedirectToAction("Index");
             }
             return View(album);
-            
+
         }
 
         //GET: Album/Delete/{id}
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             var svc = CreateAlbumService();
@@ -61,7 +64,7 @@ namespace Michael.Controllers
 
             return View(model);
         }
-        
+
         //POST: Album/Delete/{id}
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
@@ -76,6 +79,7 @@ namespace Michael.Controllers
         }
 
         //GET: Album/Edit/{id}
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             var service = CreateAlbumService();
@@ -85,12 +89,12 @@ namespace Michael.Controllers
                 {
                     AlbumId = detail.AlbumId,
                     Title = detail.Title,
-                    AlbumDescription= detail.AlbumDescription
+                    AlbumDescription = detail.AlbumDescription
 
                 };
             return View(model);
         }
-       
+
         //POST: Album/Edit/{id}
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -104,28 +108,41 @@ namespace Michael.Controllers
             }
             return View(album);
         }
-        
+
         //GET Album/Details/{id}
         public ActionResult Details(int? id)
         {
+            //put this here for the details view. didnt work
+            //ICollection<Album> albums = _db.Albums.Include(c => c.Category).ToList();
             var svc = CreateAlbumService();
             var model = svc.GetAlbumById(id);
             return View(model);
         }
 
         //View Albums by Era 
-        public ActionResult Era(int eraid)
+        public ActionResult SearchByEra(int eraId)
         {
-            if(eraid == 0)
+            //var svc = CreateAlbumService();
+            //var model = svc.GetAlbumByEra(eraId);
+            //return View(model);
+            if (eraId == 0)
             {
-                return Redirect("/Era");
+               return Redirect("/Era");
             }
             Era theEra = _db.Eras
-                .Include(e => e.Albums)
-                .Single(e => e.EraId == eraid);
+                 .Include(e => e.Albums)
+                 .Single(e => e.EraId == eraId);
             ViewBag.title = "Albums in Era: " + theEra.EraName;
             return View("Index", theEra.Albums);
         }
+
+        //public ActionResult GetAlbumList(int? EraId)
+        //{
+        //    ApplicationDbContext ctx = new ApplicationDbContext();
+        //    List<Album> album = ctx.Albums.Where(x => x.EraId == EraId).ToList();
+        //    ViewData["MyData"] = album;
+        //    return View();
+        //}
 
         private AlbumService CreateAlbumService()
         {
@@ -134,6 +151,8 @@ namespace Michael.Controllers
             return service;
         }
         
-        
+      
+
+
     }
 }

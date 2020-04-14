@@ -67,6 +67,18 @@
     <Compile Include="Migrations\202004081834310_fifthmigration.Designer.cs">
       <DependentUpon>202004081834310_fifthmigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202004090101548_sixthmigration.cs" />
+    <Compile Include="Migrations\202004090101548_sixthmigration.Designer.cs">
+      <DependentUpon>202004090101548_sixthmigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004091401077_byteAdded.cs" />
+    <Compile Include="Migrations\202004091401077_byteAdded.Designer.cs">
+      <DependentUpon>202004091401077_byteAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202004132316581_userroles.cs" />
+    <Compile Include="Migrations\202004132316581_userroles.Designer.cs">
+      <DependentUpon>202004132316581_userroles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Song.cs" />
@@ -81,6 +93,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202004081834310_fifthmigration.resx">
       <DependentUpon>202004081834310_fifthmigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004090101548_sixthmigration.resx">
+      <DependentUpon>202004090101548_sixthmigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004091401077_byteAdded.resx">
+      <DependentUpon>202004091401077_byteAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202004132316581_userroles.resx">
+      <DependentUpon>202004132316581_userroles.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

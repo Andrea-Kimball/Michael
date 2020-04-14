@@ -42,7 +42,7 @@ namespace Michael.Services
             
         }
 
-        //Edit
+        //EDIT
         public bool EditAlbum(AlbumEdit model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -67,13 +67,13 @@ namespace Michael.Services
             }
         }
         //GET ALL ALBUMS
-        public IEnumerable<AlbumListItem> GetAllAlbums()
+        public IEnumerable<AlbumDetail> GetAllAlbums()
         {
             //GET all Albums from db
             var entityList =  _ctx.Albums.ToList();
 
             //turn Albums into AlbumlistItems
-            var albumList = entityList.Select(Album => new AlbumListItem
+            var albumDetail = entityList.Select(Album => new AlbumDetail
             {
                 AlbumId = Album.AlbumId,
                 Title = Album.Title,
@@ -81,7 +81,7 @@ namespace Michael.Services
             }).ToList();
 
             //return changed list
-            return albumList;
+            return albumDetail;
 
             
         }
@@ -106,6 +106,27 @@ namespace Michael.Services
                     };
             }
 
+        }
+
+
+        //GET BY ERA
+        public IEnumerable<AlbumDetail> GetAlbumByEra(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                    .Albums
+                    .Where(e => e.EraId == id)
+                    .Select(e =>
+                       new AlbumDetail
+                       {
+                           EraId = e.EraId,                           
+                       }
+                       );
+                return entity.ToArray();
+
+            }
         }
 
     }

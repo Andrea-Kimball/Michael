@@ -168,6 +168,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AlbumController.cs" />
     <Compile Include="Controllers\DropDownListController.cs" />
     <Compile Include="Controllers\EraController.cs" />
@@ -179,26 +180,33 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AddUserToRoleViewModel.cs" />
+    <Compile Include="Models\CreateRoleViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Assets\0amjanimated8383.gif" />
+    <Content Include="Assets\514173_4458a.gif" />
     <Content Include="Assets\Blame It on the Boogie.mp3" />
     <Content Include="Assets\Break of Dawn.mp3" />
     <Content Include="Assets\Butterflies.mp3" />
     <Content Include="Assets\Can You Feel It.mp3" />
+    <Content Include="Assets\community_image_1425065305.gif" />
     <Content Include="Assets\Dangerous.mp3" />
+    <Content Include="Assets\DearestWaryKob-max-1mb.gif" />
     <Content Include="Assets\Dirty Diana.mp3" />
     <Content Include="Assets\Don%27t Stop %27Til You Get Enough.mp3" />
     <Content Include="Assets\Heaven Can Wait.mp3" />
     <Content Include="Assets\I Want You Back.mp3" />
     <Content Include="Assets\images.jpg" />
     <Content Include="Assets\Jam.mp3" />
+    <Content Include="Assets\Michael-Jackson-Glitter-68684.gif" />
     <Content Include="Assets\michael-jackson-moonwalk-feet.jpg" />
-    <Content Include="Assets\michael-jackson.jpg" />
     <Content Include="Assets\MJ.PNG" />
     <Content Include="Assets\MJgif.gif" />
+    <Content Include="Assets\moonwalk.gif" />
     <Content Include="Assets\P.Y.T. %28Pretty Young Thing%29.mp3" />
     <Content Include="Assets\Remember the Time.mp3" />
     <Content Include="Assets\Rock With You.mp3" />
@@ -206,6 +214,8 @@
     <Content Include="Assets\Shake Your Body %28Down to the Ground%29.mp3" />
     <Content Include="Assets\She%27s Out of My Life.mp3" />
     <Content Include="Assets\StFelix-Michael-Jackson.jpg" />
+    <Content Include="Assets\The Girl Is Mine.mp3" />
+    <Content Include="Assets\tumblr_mnhs1yn5tZ1rpk6v4o1_400.gif" />
     <Content Include="Content\AlbumIndex.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -223,6 +233,7 @@
       <Link>.editorconfig</Link>
     </Content>
     <Content Include="Assets\5a909c8f0feb22b3cb9e20df.webp" />
+    <None Include="Properties\PublishProfiles\MichaelForever - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -272,21 +283,22 @@
     <Content Include="Views\Album\Create.cshtml" />
     <Content Include="Views\Album\Delete.cshtml" />
     <Content Include="Views\Album\Edit.cshtml" />
-    <Content Include="Views\Album\Details.cshtml" />
     <Content Include="Views\Song\Index.cshtml" />
     <Content Include="Views\Song\Create.cshtml" />
     <Content Include="Views\Song\Details.cshtml" />
     <Content Include="Views\Song\Delete.cshtml" />
     <Content Include="Views\Song\Edit.cshtml" />
-    <Content Include="Views\Era\Details.cshtml" />
-    <Content Include="Views\DropDownList\Index.cshtml" />
     <Content Include="Views\Era\Create.cshtml" />
     <Content Include="Views\Era\Edit.cshtml" />
     <Content Include="Views\Era\Delete.cshtml" />
     <Content Include="Views\Era\Index.cshtml" />
+    <Content Include="Views\Album\Details.cshtml" />
+    <Content Include="Views\Era\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Admin\" />
+    <Folder Include="Views\DropDownList\" />
     <Folder Include="Views\Group\" />
   </ItemGroup>
   <ItemGroup>

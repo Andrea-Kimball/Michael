@@ -34,11 +34,14 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Michael, Forever</p>
-        </footer>
     </div>
+    <footer class="ftr">
+        <ul id="menuFooter">
 
+            <p>&copy; @DateTime.Now.Year - Michael, Forever</p>
+        </ul>
+    </footer>
+    
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

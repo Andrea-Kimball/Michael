@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Michael.Models.DropDownList
 {
-    public class DropDownListCreate
+    public class DDL
     {
         public int EraId { get; set; }
         public int AlbumId { get; set; }

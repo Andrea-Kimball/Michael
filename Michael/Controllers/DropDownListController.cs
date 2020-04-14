@@ -16,6 +16,7 @@ namespace Michael.Controllers
             ViewBag.EraList = new SelectList(GetEraList(), "EraId", "EraName");
             return View();
         }
+
         public List<Era> GetEraList()
         {
             ApplicationDbContext ctx = new ApplicationDbContext();
@@ -29,5 +30,6 @@ namespace Michael.Controllers
             ViewBag.AlbumList = new SelectList(selectList, "AlbumId", "Title");
             return View();
         }
+
     }
 }

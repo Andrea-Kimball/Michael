@@ -13,6 +13,6 @@ namespace Michael.Models.Era
         public int EraId { get; set; }
         [Display(Name ="Era Name")]
         public string EraName { get; set; }        
-        public virtual ICollection<Album> Albums { get; set; } = new List<Album>();
+        public virtual ICollection<Album> Albums { get; set; } //= new List<Album>();
     }
 }

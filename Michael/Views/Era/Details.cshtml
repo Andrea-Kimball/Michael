@@ -4,35 +4,47 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<!DOCTYPE html>
 
-<div>
-    <h4>Era Detail</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.EraId)
-        </dt>
+<html>
+<head>
+    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>EraDetail</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.EraId)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.EraId)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.EraId)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EraName)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.EraName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.EraName)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Albums)
-        </dt>      
+            <dd>
+                @Html.DisplayFor(model => model.EraName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Albums)
+            </dt>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.EraId  }) |
-    @Html.ActionLink("Back to List", "Index", "DropDownList") |
-    
-</p>
+            <dd>
+                @Html.DisplayFor(model => model.Albums)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

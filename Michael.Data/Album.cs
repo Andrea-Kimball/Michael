@@ -22,16 +22,10 @@ namespace Michael.Data
         [ForeignKey("Category")]        
         public int EraId { get; set; }
         public virtual Era Category { get; set; }
+       
 
-        
-        public virtual ICollection<Song> Songs { get; set; } = new List<Song>();
+        public virtual IEnumerable<Song> Songs { get; set; }
 
-
-        //[Required]
-        //[Display(Name = "Album Release Year")]
-        //[MinLength(4)]
-        //[MaxLength(4)]
-        // public int ReleaseYear { get; set; }
-        // public List<Song> Songs { get; set; }
+      
     }
 }

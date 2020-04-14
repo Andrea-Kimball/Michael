@@ -20,9 +20,9 @@ namespace Michael.Data
         public int AlbumId { get; set; }
         public virtual Album Category { get; set; }
 
-        public int ReleaseYear { get; set; }
+        public byte[] SongAudio { get; set; }
 
-        
+
     }
     
 }

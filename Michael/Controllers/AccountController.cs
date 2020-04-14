@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Michael.Models;
 using Michael.Data;
+using Michael.Services;
 
 namespace Michael.Controllers
 {
@@ -23,10 +24,21 @@ namespace Michael.Controllers
         {
         }
 
-        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        //public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager )
+        //{
+        //    UserManager = userManager;
+        //    SignInManager = signInManager;
+        //}
+        public ApplicationUserManager UserManager
         {
-            UserManager = userManager;
-            SignInManager = signInManager;
+            get
+            {
+                return _userManager ?? Request.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
         }
 
         public ApplicationSignInManager SignInManager
@@ -41,17 +53,13 @@ namespace Michael.Controllers
             }
         }
 
-        public ApplicationUserManager UserManager
+        private UserService CreateUserService()
         {
-            get
-            {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-            private set
-            {
-                _userManager = value;
-            }
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var userService = new UserService(userId);
+            return userService;
         }
+
 
         //
         // GET: /Account/Login

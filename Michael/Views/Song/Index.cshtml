@@ -4,30 +4,98 @@
 }
 
 <h2>Index</h2>
-<link href="~/Content/Song.css" rel="stylesheet" type="text/css" />
+<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
 
-<h2>Full Discography</h2>
-<p> Jackson 5 to Invicible @Html.ActionLink("Contact us to recommend any changes", "Contact", "Home") </p>
 
-<table class="table">
-    <tr>
-        <th>Album</th>
-        <th>Title</th>
-        
+<p> Jackson 5 to Invincible @Html.ActionLink("Contact us to recommend any changes", "Contact", "Home") </p>
 
-    </tr>
-    @foreach (var song in Model)
-    {
-        <tr>
-            <td>@song.Category.Title</td>
-            <td>@song.Title</td>
-            
-            <td>
-                
-                @Html.ActionLink("Modify", "Edit", new { id = song.SongId })
-                @Html.ActionLink("Details", "Details", new { id = song.SongId })
-                @Html.ActionLink("Delete", "Delete", new { id = song.SongId })
-            </td>
-        </tr>
-    }
-</table>
+
+<div class=" col-lg-4">
+    <div id="accordion">
+        <div class="card">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        <h3>Full Discography</h3>
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+
+
+                    @Html.ActionLink("Add a Song", "Create")
+                    <table class="table">
+                        <tr>
+                            <th>Album</th>
+                            <th>Title</th>
+
+
+                        </tr>
+                        @foreach (var song in Model)
+                        {
+                            <tr>
+                                <td>@song.Category.Title</td>
+                                <td>@song.Title</td>
+
+                                <td>
+
+                                    @Html.ActionLink("Modify", "Edit", new { id = song.SongId })
+                                    @Html.ActionLink("Details", "Details", new { id = song.SongId })
+                                    @Html.ActionLink("Delete", "Delete", new { id = song.SongId })
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+</style>
+
+<div class=" col-lg-4">
+    <img src="~/Assets/tumblr_mnhs1yn5tZ1rpk6v4o1_400.gif" />
+</div>
+
+
+<div class=" col-lg-4">
+    <h4>Jackson 5ive</h4>
+    <ul id="playlist">
+
+        <li><a href="~/Assets/Blame It on the Boogie.mp3">Blame It On The Boogie</a></li>
+        <li><a href="~/Assets/Can You Feel It.mp3">Can You Feel It</a></li>
+        <li><a href="~/Assets/I Want You Back.mp3"> I Want You Back</a></li>
+        <li><a href="~/Assets/Shake Your Body (Down to the Ground).mp3">Shake Your Body(Down To the Ground)</a></li>
+    </ul>
+    <h4>1980's</h4>
+    <ul id="playlist">
+        <li><a href="~/Assets/She's Out of My Life.mp3">Shes Out of My Life</a></li>
+        <li><a href="~/Assets/Dirty Diana.mp3">Dirty Diana</a></li>
+        <li><a href="~/Assets/P.Y.T. (Pretty Young Thing).mp3">P.Y.T</a></li>
+        <li><a href="~/Assets/Don't Stop 'Til You Get Enough.mp3">Dont Stop Til You Get Enough</a></li>
+        <li><a href="~/Assets/Rock With You.mp3">Rock With You</a></li>
+        <li><a href="~/Assets/The Girl Is Mine.mp3">The Girl Is Mine</a></li>
+        <li></li>
+    </ul>
+    <h4>1990's</h4>
+    <ul id="playlist">
+        <li><a href="~/Assets/Jam.mp3">Jam</a></li>
+        <li><a href="~/Assets/Dangerous.mp3">Dangerous</a></li>
+        <li><a href="~/Assets/Remember the Time.mp3">Remember The Time</a></li>
+        <li></li>
+    </ul>
+    <h4> 2000's</h4>
+    <ul id="playlist">
+        <li><a href="~/Assets/Break of Dawn.mp3">Break Of Dawn</a></li>
+        <li><a href="~/Assets/Butterflies.mp3">Butterflies</a></li>
+        <li><a href="~/Assets/Heaven Can Wait.mp3">Heaven Can Wait</a></li>
+        <li></li>
+    </ul>
+
+
+</div>
+@* //////////////////////////////////////////////////////////////////////////////////////////////////// *@
+

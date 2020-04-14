@@ -1,4 +1,5 @@
 ﻿using Michael.Data;
+using Michael.Models.Albums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,5 +12,6 @@ namespace Michael.Models.Era
     {
         public int EraId { get; set; }
         public string EraName { get; set; }
+      
     }
 }

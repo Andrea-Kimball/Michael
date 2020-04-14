@@ -3,37 +3,64 @@
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
-
 <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-@*@if(ViewBag.Model.Count ==0)
-    {
-        <p> No Albums yet!</p>
-    }*@
-<p>
-    @Html.ActionLink("Add an Era", "Create")
-</p>
 
-<table class="table">
-    <tr>
-        <th>Era</th>
-        <th>Name</th>
-        
 
-    </tr>
-    @foreach (var era in Model)
-    {
-        <tr>
-            <td>@era.EraId</td>
-            <td>@era.EraName</td>
+    
+
+                <h3>Era Index</h3>
+
             
-            <td>
-                @Html.ActionLink("Add an Album", "Create", "Album")
-                @Html.ActionLink("Modify", "Edit", new { id = era.EraId })
-                @Html.ActionLink("Details", "Details", new { id = era.EraId })
-                @Html.ActionLink("Delete", "Delete", new { id = era.EraId })
-            </td>
-        </tr>
-    }
-</table>
+                <p>
+
+
+                <p>
+                    @Html.ActionLink("Add an Era", "Create")
+                </p>
+                <div class=" col-md-6">
+                    <table class="table">
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.EraId)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.EraName)
+                            </th>
+                            <th></th>
+                        </tr>
+
+                        @foreach (var era in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => era.EraId)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => era.EraName)
+                                </td>
+
+                                <td>
+                                    @Html.ActionLink("Add an Album", "Create", "Album")
+                                    @Html.ActionLink("Modify", "Edit", new { id = era.EraId })
+                                    @Html.ActionLink("Details", "Details", new { id = era.EraId })
+                                    @Html.ActionLink("Delete", "Delete", new { id = era.EraId })
+
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                </div>
+
+       
+    <div class="col-md-6">
+        <img src="~/Assets/community_image_1425065305.gif" style="width:600px; height:500px;" alt="" class="container_img" />
+    </div>
+
+
+
+
+
+
+
+
+

@@ -67,17 +67,16 @@ namespace Michael.Services
         }
 
         //GET ALL
-        public async Task<List<EraListItem>> GetAllErasAsync()
+        public List<EraListItem> GetAllEras()
         {
             //GET all Eras from db
-            var entityList = await _context.Eras.ToListAsync();
+            var entityList = _context.Eras.ToList();
 
-            //turn themeEras into EralistItems
+            //turn Eras into EralistItems
             var EraList = entityList.Select(Era => new EraListItem
             {
                 EraId = Era.EraId,
                 EraName = Era.EraName,
-
             }).ToList();
             //return changed list
             return EraList;
@@ -97,12 +96,13 @@ namespace Michael.Services
                     {
                         EraId = entity.EraId,
                         EraName = entity.EraName,
-                        Albums = entity.Albums,
-                        
+                        Albums = entity.Albums
+
                     };
             }
-           
+
         }
+
 
 
     }

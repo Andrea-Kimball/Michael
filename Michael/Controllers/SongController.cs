@@ -17,6 +17,7 @@ namespace Michael.Controllers
         private ApplicationDbContext _db = new ApplicationDbContext();
 
         // GET: Song
+        [Authorize]
         public ActionResult Index()
         {
             ICollection<Song> songs = _db.Songs.Include(c => c.Category).ToList();
@@ -25,6 +26,7 @@ namespace Michael.Controllers
 
 
         //GET: Song/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -33,6 +35,7 @@ namespace Michael.Controllers
         //POST: Song/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        
         public ActionResult Create(Song song)
         {
             if (ModelState.IsValid)
@@ -51,6 +54,7 @@ namespace Michael.Controllers
         }
 
         //GET: Song/Delete/{id}
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             var svc = CreateSongService();
@@ -62,6 +66,7 @@ namespace Michael.Controllers
         //POST: Song/Delete/{id}
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        
         public ActionResult Delete(int id)
         {
             var service = CreateSongService();
@@ -73,6 +78,7 @@ namespace Michael.Controllers
         }
 
         //GET: Song/Edit/{id}
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             var service = CreateSongService();
@@ -89,6 +95,7 @@ namespace Michael.Controllers
         //POST: Song/Edit/{id}
         [HttpPost]
         [ValidateAntiForgeryToken]
+        
         public ActionResult Edit(Song song)
         {
             if (ModelState.IsValid)
@@ -100,6 +107,7 @@ namespace Michael.Controllers
             return View(song);
         }
 
+
         //GET Song/Details/{id}
         public ActionResult Details(int? id)
         {
@@ -107,12 +115,27 @@ namespace Michael.Controllers
             var model = svc.GetSongById(id);
             return View(model);
         }
+        public ActionResult GetByAlbum(Album album)
+        {
+            SongService songService = CreateSongService();
+            var song = songService.GetSongByAlbum(album);
+            return View(song);
+        }
 
+        //public ActionResult Audio(int audio)
+        //{
+            //how do i take in the songId and use that to play the corresponding song?
+        //    var svc = CreateSongService();
+        //    var songAudio = svc.GetSongById(audio);            
+        //    return File(songAudio, "audio/mp3");
+
+        //}
         private SongService CreateSongService()
         {
             //var userId = User.Identity.GetUserId();
             var service = new SongService();
             return service;
         }
+
     }
 }

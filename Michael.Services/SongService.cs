@@ -37,7 +37,7 @@ namespace Michael.Services
             {
                 var entity = ctx.
                     Songs
-                    .Single(s => s.SongId ==model.SongId);
+                    .Single(s => s.SongId == model.SongId);
                 entity.Title = model.Title;
                 return ctx.SaveChanges() == 1;
             }
@@ -78,6 +78,23 @@ namespace Michael.Services
                     ctx
                         .Songs
                         .Single(e => e.SongId == songId);
+                return
+                    new SongDetail
+                    {
+                        SongId = entity.SongId,
+                        Title = entity.Title,
+                    };
+            }
+
+        }
+        public SongDetail GetSongByAlbum(Album album)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Songs
+                        .Single(e => e.Category == album);
                 return
                     new SongDetail
                     {

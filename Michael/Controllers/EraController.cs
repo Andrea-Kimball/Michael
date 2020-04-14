@@ -1,4 +1,5 @@
 ﻿using Michael.Data;
+using Michael.Models.Albums;
 using Michael.Models.Era;
 using Michael.Services;
 using Microsoft.AspNet.Identity;
@@ -15,12 +16,16 @@ namespace Michael.Controllers
     public class EraController : Controller
     {
         private ApplicationDbContext _db = new ApplicationDbContext();
+
         // GET: Era
+        [AllowAnonymous]
         public ActionResult Index()
         {
+            ViewBag.EraList = new SelectList(GetEraList(), "EraId", "EraName");
             return View(_db.Eras.ToList());
         }
         //GET: Era/Create
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             return View();
@@ -28,6 +33,7 @@ namespace Michael.Controllers
         //POST: Era/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        
         public ActionResult Create(Era era)
         {
             if (ModelState.IsValid)
@@ -42,9 +48,10 @@ namespace Michael.Controllers
             }
             return View(era);
         }
-       
-        
+
+
         //GET: Era/Delete/{id}
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             var svc = CreateEraService();
@@ -52,25 +59,27 @@ namespace Michael.Controllers
 
             return View(model);
 
-            
+
         }
-        
-        //POST: Album/Delete/{id}
+
+        //POST: Era/Delete/{id}
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        
         public ActionResult Delete(int id)
         {
 
             var service = CreateEraService();
 
-            service.DeleteEra(id);            
+            service.DeleteEra(id);
 
             return RedirectToAction("Index");
-            
+
 
         }
 
         //GET: Era/EDIT
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             var service = CreateEraService();
@@ -84,8 +93,9 @@ namespace Michael.Controllers
                 };
             return View(model);
         }
-        
+
         //POST: Era/EDIT
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(int id, EraEdit model)
@@ -117,16 +127,31 @@ namespace Michael.Controllers
 
             var svc = CreateEraService();
             var model = svc.GetEraById(id);
-            return View(model);
+            //var albums = _db.Eras.???
+            var albums = _db.Albums.Select(e => e.EraId == id);
+            return View(model);       
 
         }
+
+
         private EraService CreateEraService()
         {
             //var userId = Guid.Parse(User.Identity.GetUserId());
             var service = new EraService();
             return service;
         }
+
+
+        ///trying an alternate method to view albums by EraId 
+        
+        public List<Era> GetEraList()
+        {
+          List<Era> eras = _db.Eras.ToList();
+            return eras;
+        }
+        
+        
     }
-    
+
 }
 

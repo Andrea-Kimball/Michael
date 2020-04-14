@@ -1,13 +1,12 @@
 ﻿body {
-    
-    padding-top: 50px;
-    padding-bottom: 20px;
+    background-color: #534AFF;
+    padding-top: 0px;
+    padding-bottom: 0px;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+    
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -28,33 +27,140 @@ textarea {
 h1 {
     letter-spacing: 4px;
 }
+
 h2{
 
 }
+
 h3{
 
 }
+
 h4{
 
 }
+
 p{
 
 }
+a {
+    color: darkred;
+}
+    a-hover {
+        color: black;
+    }
+    
+               
+           
+
+.img{
+max-height: 100%;
+
+}
+.ftr{
+
+}
+
+
+
+
+
 /*Home-Index*/
 .home {
-    width: 1170px;
-    background-image: url('../Assets/MJ.png');
+    width: 1170px;    
+    background-size: 100%;
+    background-position: center;
+    background-attachment: fixed;
     background-size: 100%;
     background-position: center;
     background-attachment: fixed;
     padding-right: 15px;
     padding-left: 15px;
+    margin-top:75px;
     margin-right: auto;
     margin-left: auto;
     color: white;
 }
+#home{
+    margin-top:75px;
+}
 /*Era-Index*/
 
+
+
+
+
 /*Album-Index*/
+@keyframes album {
+    0% {
+        left: 0px;
+    }
+    25%{
+       left: 100px;
+    }
+    50%{
+        left: 200px;
+    }
+    75%{
+        left:300px;
+    }
+    100%{
+        left: 400px;
+    }
+}
+#album {    
+    animation-name: album;
+    animation-duration: 5s;
+}
 
 /*Song-Index*/
+.song{
+   
+}
+#playlist {
+    list-style: none;
+}
+
+    #playlist li a {
+        color: black;
+    }
+
+#rotate {
+    position:absolute;    
+    animation-name:rotate;
+    animation-duration: 4s;
+
+}  
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+        left: 120px;
+    }
+
+    25% {
+        transform: rotate(20deg);
+        left: 120px;
+    }
+
+    50% {
+        transform: rotate(0deg);
+        left: 700px;
+    }
+
+    55% {
+        transform: rotate(0deg);
+        left: 700px;
+    }
+
+    70% {
+        transform: rotate(0deg);
+        left: 700px;
+        
+    }
+
+    100% {
+        transform: rotate(-360deg);
+        left: 120px;
+    }
+}
