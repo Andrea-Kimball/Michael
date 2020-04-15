@@ -6,6 +6,7 @@
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
+    padding-top: 5rem;
 }
 
 /* Override the default bootstrap behavior where horizontal description lists 
@@ -91,19 +92,7 @@ a-hover {
 @keyframes album {
     0% {
         left: 0px;
-    }
-
-    25% {
-        left: 100px;
-    }
-
-    50% {
-        left: 200px;
-    }
-
-    75% {
-        left: 300px;
-    }
+    }  
 
     100% {
         left: 400px;
@@ -112,7 +101,7 @@ a-hover {
 
 #album {
     animation-name: album;
-    animation-duration: 5s;
+    animation-duration: 6s;
 }
 
 /*Song-Index*/

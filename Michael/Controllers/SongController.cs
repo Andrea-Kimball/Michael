@@ -55,7 +55,7 @@ namespace Michael.Controllers
 
         //GET: Song/Delete/{id}
         [Authorize(Roles = "Admin")]
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int id)
         {
             var svc = CreateSongService();
             var model = svc.GetSongById(id);
@@ -67,7 +67,7 @@ namespace Michael.Controllers
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         
-        public ActionResult Delete(int id)
+        public ActionResult DeleteSong(int id)
         {
             var service = CreateSongService();
 
@@ -79,7 +79,7 @@ namespace Michael.Controllers
 
         //GET: Song/Edit/{id}
         [Authorize(Roles = "Admin")]
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int id)
         {
             var service = CreateSongService();
             var detail = service.GetSongById(id);
@@ -109,7 +109,7 @@ namespace Michael.Controllers
 
 
         //GET Song/Details/{id}
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
             var svc = CreateSongService();
             var model = svc.GetSongById(id);

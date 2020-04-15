@@ -4,37 +4,39 @@
     ViewBag.Title = "Details";
 }
 
-<!DOCTYPE html>
-<div class=" col-md-12">
-    <hr />
-    <hr />
+<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
 
-    <h4>Era Detail</h4>
-    <hr />
-    <div class=" col-md-6">
-        <table class="table">
-            
-
-                <tr><b>Title</b></tr>
-
-            
-
-            @foreach (var era in Model.Albums)
-            {
-                <tr>
-                    <td>@era.Title</td>
+<div class=" col-md-6">
+    <h2><i><b> @Html.DisplayFor(model => model.EraName)</b></i></h2>
+    <h3>Era Detail</h3>
 
 
-                </tr>
-            }
-        </table>
-    </div>
-    
-</div>
-<div>
+    <table class="table">
+
+
+        <tr><b>Title</b></tr>
+
+
+
+        @foreach (var era in Model.Albums)
+        {
+            <tr>
+                <td>@era.Title</td>
+
+
+            </tr>
+        }
+    </table>
+
+
+
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EraId })|
     @Html.ActionLink("Back to List", "Index")
 </div>
-    
-        
-    
+
+<div class=" col-md-6">
+    <img src="~/Assets/StFelix-Michael-Jackson.jpg" style=" height:600px; width:450px;" />
+
+</div>
+
 

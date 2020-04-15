@@ -172,7 +172,6 @@
     <Compile Include="Controllers\AlbumController.cs" />
     <Compile Include="Controllers\DropDownListController.cs" />
     <Compile Include="Controllers\EraController.cs" />
-    <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SongController.cs" />
@@ -298,7 +297,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Admin\" />
-    <Folder Include="Views\DropDownList\" />
     <Folder Include="Views\Group\" />
   </ItemGroup>
   <ItemGroup>

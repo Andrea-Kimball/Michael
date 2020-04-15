@@ -70,7 +70,7 @@ namespace Michael.Services
         }
 
         //GET BY ID
-        public SongDetail GetSongById(int? songId)
+        public SongDetail GetSongById(int songId)
         {
             using (var ctx = new ApplicationDbContext())
             {

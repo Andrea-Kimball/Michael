@@ -1,7 +1,7 @@
 ﻿using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Michael.Models;
+
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 
@@ -35,6 +35,6 @@ namespace Michael.Data
         public DbSet<Era> Eras { get; set; }
         public DbSet<Album> Albums { get; set; }
         public DbSet<Song> Songs { get; set; }
-        public DbSet<Group> Groups { get; set; }
+        
     }
 }

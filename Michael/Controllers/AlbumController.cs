@@ -47,7 +47,7 @@ namespace Michael.Controllers
                     AlbumDescription = album.AlbumDescription,
                     
                 };
-                _db.Albums.Add(newAlbum);
+                _db.Albums.Add(album);
                 _db.SaveChanges();
                 return RedirectToAction("Index");
             }

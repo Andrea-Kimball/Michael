@@ -1,33 +1,41 @@
 ﻿@model Michael.Models.Albums.AlbumDetail
 
+<link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
 
-    <div class=" col-md-6">
-        <hr />
-        <hr />
-        <h4>Album Detail</h4>
-        <hr />
-
-
-
-        <table class="table">
-            
-
-                <tr><b>Title</b></tr>
-
-
-            
-            @foreach (var album in Model.Songs)
-            {
-                <tr>
-                    <td>@album.Title</td>
-
-
-                </tr>
-            }
-        </table>
-    </div>
 <div class=" col-md-6">
+    <h2><i><b> @Html.DisplayFor(model => model.Title)</b></i></h2>
+    <h3>Album Detail</h3>
 
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AlbumDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AlbumDescription)
+        </dd>
+    </dl>
+    <table class="table">
+
+
+        <tr><b>Title</b></tr>
+
+
+        @foreach (var album in Model.Songs)
+        {
+            <tr>
+                <td>@album.Title</td>
+
+
+            </tr>
+        }
+    </table>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.AlbumId })|
+    @Html.ActionLink("Back to Index", "Index")
 </div>
 
-
+<div class=" col-md-6">
+    <img src="~/Assets/StFelix-Michael-Jackson.jpg" style=" height:600px; width:450px;" />
+   
+</div>

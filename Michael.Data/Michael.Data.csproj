@@ -57,27 +57,10 @@
     <Compile Include="Album.cs" />
     <Compile Include="DropDownList.cs" />
     <Compile Include="Era.cs" />
-    <Compile Include="Group.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202004071643544_migration.cs" />
-    <Compile Include="Migrations\202004071643544_migration.Designer.cs">
-      <DependentUpon>202004071643544_migration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004081834310_fifthmigration.cs" />
-    <Compile Include="Migrations\202004081834310_fifthmigration.Designer.cs">
-      <DependentUpon>202004081834310_fifthmigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004090101548_sixthmigration.cs" />
-    <Compile Include="Migrations\202004090101548_sixthmigration.Designer.cs">
-      <DependentUpon>202004090101548_sixthmigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004091401077_byteAdded.cs" />
-    <Compile Include="Migrations\202004091401077_byteAdded.Designer.cs">
-      <DependentUpon>202004091401077_byteAdded.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202004132316581_userroles.cs" />
-    <Compile Include="Migrations\202004132316581_userroles.Designer.cs">
-      <DependentUpon>202004132316581_userroles.cs</DependentUpon>
+    <Compile Include="Migrations\202004150013296_migraine.cs" />
+    <Compile Include="Migrations\202004150013296_migraine.Designer.cs">
+      <DependentUpon>202004150013296_migraine.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -88,20 +71,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202004071643544_migration.resx">
-      <DependentUpon>202004071643544_migration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004081834310_fifthmigration.resx">
-      <DependentUpon>202004081834310_fifthmigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004090101548_sixthmigration.resx">
-      <DependentUpon>202004090101548_sixthmigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004091401077_byteAdded.resx">
-      <DependentUpon>202004091401077_byteAdded.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202004132316581_userroles.resx">
-      <DependentUpon>202004132316581_userroles.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202004150013296_migraine.resx">
+      <DependentUpon>202004150013296_migraine.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -76,9 +76,7 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Goup\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Michael.Data\Michael.Data.csproj">
       <Project>{800E066A-5C7A-4BC1-BB69-B049E1E977EA}</Project>

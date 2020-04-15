@@ -3,13 +3,13 @@
 @{
     ViewBag.Title = "Details";
 }
-<hr />
-<hr />
+
+<h2><i><b> @Html.DisplayFor(model => model.Title)</b></i></h2>
 <h3>Song Detail</h3>
 
 <div class=" col-md-6">
 
-    <hr />
+
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Title)
@@ -23,10 +23,11 @@
 
 
     <p>
-        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+        @Html.ActionLink("Edit", "Edit", new { id = Model.SongId }) |
         @Html.ActionLink("Back to List", "Index")
     </p>
 </div>
 <div class=" col-md-6">
+    <img src="~/Assets/StFelix-Michael-Jackson.jpg" style=" height:600px; width:450px;" />
 
 </div>

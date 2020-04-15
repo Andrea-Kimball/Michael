@@ -3,7 +3,7 @@ namespace Michael.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class migration : DbMigration
+    public partial class migraine : DbMigration
     {
         public override void Up()
         {
@@ -35,24 +35,12 @@ namespace Michael.Data.Migrations
                     {
                         SongId = c.Int(nullable: false, identity: true),
                         Title = c.String(nullable: false),
-                        AlbumId = c.Int(),
-                        ReleaseYear = c.Int(nullable: false),
+                        AlbumId = c.Int(nullable: false),
+                        SongAudio = c.Binary(),
                     })
                 .PrimaryKey(t => t.SongId)
-                .ForeignKey("dbo.Albums", t => t.AlbumId)
+                .ForeignKey("dbo.Albums", t => t.AlbumId, cascadeDelete: true)
                 .Index(t => t.AlbumId);
-            
-            CreateTable(
-                "dbo.Groups",
-                c => new
-                    {
-                        GroupId = c.Int(nullable: false, identity: true),
-                        Name = c.String(),
-                        Description = c.String(),
-                        City = c.String(),
-                        State = c.String(),
-                    })
-                .PrimaryKey(t => t.GroupId);
             
             CreateTable(
                 "dbo.AspNetRoles",
@@ -82,6 +70,8 @@ namespace Michael.Data.Migrations
                 c => new
                     {
                         Id = c.String(nullable: false, maxLength: 128),
+                        FirstName = c.String(),
+                        LastName = c.String(),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
                         PasswordHash = c.String(),
@@ -145,7 +135,6 @@ namespace Michael.Data.Migrations
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.AspNetUserRoles");
             DropTable("dbo.AspNetRoles");
-            DropTable("dbo.Groups");
             DropTable("dbo.Songs");
             DropTable("dbo.Eras");
             DropTable("dbo.Albums");
