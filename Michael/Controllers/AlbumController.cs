@@ -101,7 +101,7 @@ namespace Michael.Controllers
         public ActionResult Edit(Album album)
         {
             if (ModelState.IsValid)
-            {
+            {            
                 _db.Entry(album).State = EntityState.Modified;
                 _db.SaveChanges();
                 return RedirectToAction("Index");
@@ -126,7 +126,18 @@ namespace Michael.Controllers
             return service;
         }
         
-      
+      //Trying a dropdown menu
+      //GET Era Drop Down
+      //public ActionResult DropDown()
+      //  {
+      //      List<SelectListItem> list = new List<SelectListItem>();
+      //      foreach (var era in _db.Eras)
+      //          list.Add(new SelectListItem() { Value = era.EraName, Text = era.EraName });
+      //      ViewBag.Eras = list;
+      //      return View();
+      //  }
+
+       
 
 
     }
